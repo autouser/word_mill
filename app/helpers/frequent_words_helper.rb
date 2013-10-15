@@ -1,0 +1,2 @@
+module FrequentWordsHelper
+end

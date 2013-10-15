@@ -1,0 +1,42 @@
+TASK
+
+Write a Web-Service, which accepts a post request with a parameter "text". This parameter can be any string. It returns a json, which contains the 5 most frequently words from this text with the count of their occurence.
+ 
+E.g. text=hello hello hello my my name is
+ 
+returns
+ 
+{
+  "hello" : 3,
+  "my" : 2,
+  "name" : 1,
+  "is" : 1
+}
+ 
+Use Ruby, add tests, send us a link to the code on github. Feel free to include or point out other code you developed. Good luck!
+
+
+1. PROJECT PREPARATION
+
+Given task doesn't a require data persistance. Also there is no need for an asset pipeline and rails javascript. It can be added later. Also I prefer to use RSpec so Test::Unit should be excluded.
+
+rails new word_mill -T -O -J -S
+
+2. 'text' PARAMETER
+
+Obviously that 'text' parameter shouldn't be empty.
+
+The meaning of the term 'word' is a bit of unclear.
+According to the task test sample it can contain english language characters. I considered that it shouldn't be English only but any language.
+
+But if I'm wrong there is a way to change scan pattern (which is /\p{L}+/) to the /[a-zA-Z]/.
+
+Example like "username:hello1 email: hello@example.com, comment: 'Viele Grüße'" should be proceed to the JSON object like:
+
+{
+  "hello" : 2,
+  "username" : 1,
+  "example" : 1,
+  "com" : 1,
+  "Viele" : 1
+}

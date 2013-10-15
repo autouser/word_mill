@@ -1,0 +1,26 @@
+= WordMill
+
+WordMill is a webservice which returns 5 most frequent words in the text.
+
+== Instalation
+
+Clone it to your PC, then run:
+
+  bundle
+  rails s
+
+== Usage
+
+Visit 'frequent_words' URL with parameter 'text':
+
+  curl --data "text=hello hello hello my my name is" http://localhost:3000/frequent_words
+
+Action returns JSON:
+
+  {"hello":3,"my":2,"name":1,"is":1}
+
+== Configuration
+
+By default WordMill scans for UTF-8 letter characters only. You can change the default pattern inside an initializer:
+
+  FrequentWords.scan_for = /[a-zA-Z]+/
